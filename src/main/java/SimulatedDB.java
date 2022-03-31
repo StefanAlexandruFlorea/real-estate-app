@@ -6,8 +6,8 @@ public class SimulatedDB {
     private static final List<RealEstate> REAL_ESTATES = new ArrayList<>();
 
     public void addRealEstate() {
-        System.out.println("enter owner name ");
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter owner name ");
         String owner = scanner.nextLine();
 
         System.out.println("type");
@@ -15,7 +15,7 @@ public class SimulatedDB {
 
         System.out.println("rent value");
         int rent = scanner.nextInt();
-        while(!RentValidator.isValidRent(type, rent)){
+        while (!RentValidator.isValidRent(type, rent)) {
             System.out.println("try again");
             rent = scanner.nextInt();
         }
@@ -34,5 +34,27 @@ public class SimulatedDB {
         REAL_ESTATES.sort((r1, r2) -> r1.getRentValue() - r2.getRentValue());
         System.out.println("real estates: ");
         System.out.println(REAL_ESTATES);
+    }
+
+    public void updateRent() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("enter id ");
+        int id = scanner.nextInt();
+
+        System.out.println("enter rent ");
+        int rent = scanner.nextInt();
+
+        for (RealEstate realEstate : REAL_ESTATES) {
+            if (realEstate.getId() == id) {
+                RealEstateType type = realEstate.getType();
+                while (!RentValidator.isValidRent(type, rent)) {
+                    System.out.println("try again");
+                    rent = scanner.nextInt();
+                }
+                realEstate.setRentValue(rent);
+            } else {
+                System.out.println("real estate does not exist");
+            }
+        }
     }
 }

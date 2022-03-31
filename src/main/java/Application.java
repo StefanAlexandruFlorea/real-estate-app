@@ -21,7 +21,7 @@ public class Application {
                 case 1:
                     simulatedDB.addRealEstate();
                     break;
-                case 2: ;
+                case 2: simulatedDB.updateRent();
                     break;
                 case 3: simulatedDB.listRealEstates();
                     break;
