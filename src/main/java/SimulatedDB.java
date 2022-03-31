@@ -44,17 +44,41 @@ public class SimulatedDB {
         System.out.println("enter rent ");
         int rent = scanner.nextInt();
 
+        boolean found = false;
         for (RealEstate realEstate : REAL_ESTATES) {
             if (realEstate.getId() == id) {
+                found = true;
                 RealEstateType type = realEstate.getType();
                 while (!RentValidator.isValidRent(type, rent)) {
                     System.out.println("try again");
                     rent = scanner.nextInt();
                 }
                 realEstate.setRentValue(rent);
-            } else {
-                System.out.println("real estate does not exist");
             }
+        }
+
+        if(!found){
+            System.out.println("real estate doesn't exist");
+        }
+    }
+
+    public void deleteRealEstate() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("enter id ");
+        int id = scanner.nextInt();
+
+        RealEstate toBeDeleted = null;
+
+        for (RealEstate realEstate : REAL_ESTATES) {
+            if (realEstate.getId() == id) {
+                toBeDeleted = realEstate;
+            }
+        }
+
+        if (toBeDeleted != null) {
+            REAL_ESTATES.remove(toBeDeleted);
+        } else {
+            System.out.println(" real estate doesn't exist");
         }
     }
 }

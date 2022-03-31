@@ -25,11 +25,11 @@ public class Application {
                     break;
                 case 3: simulatedDB.listRealEstates();
                     break;
-                case 4: ;
+                case 4:
                     break;
-                case 5: ;
+                case 5: simulatedDB.deleteRealEstate();
                     break;
-                case 6: ;
+                case 6:
                     break;
                 case 0:
                     break;
