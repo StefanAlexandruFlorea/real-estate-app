@@ -1,16 +1,30 @@
 public class RentValidator {
 
-    public static boolean isValidRent(RealEstateType estateType, long rentValue) {
+    public static boolean isValidRent(RealEstateType estateType, int rentValue) {
+        if (rentValue < 0) {
+            System.out.println("Rent should be a positive number");
+            return false;
+        }
+        boolean valid = false;
         switch (estateType) {
             case STUDIO:
-                System.out.println("rent not valid, it should be <=350");
-                return rentValue <= 350;
+                valid = rentValue <= 350;
+                if (!valid) {
+                    System.out.println("rent value should be <= 350");
+                }
+                return valid;
             case TWO_ROOMS:
-                System.out.println("rent not valid, it should be <=450");
-                return rentValue <= 450;
+                valid = rentValue <= 450;
+                if (!valid) {
+                    System.out.println("rent value should be <= 450");
+                }
+                return valid;
             case THREE_ROOMS:
-                System.out.println("rent not valid, it should be >=455");
-                return rentValue >= 455;
+                valid = rentValue >= 455;
+                if (!valid) {
+                    System.out.println("rent value should be >=455");
+                }
+                return valid;
             default:
                 return false;
         }
