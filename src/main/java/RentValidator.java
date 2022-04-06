@@ -5,6 +5,7 @@ public class RentValidator {
             System.out.println("Rent should be a positive number");
             return false;
         }
+
         boolean valid = false;
         switch (estateType) {
             case STUDIO:
